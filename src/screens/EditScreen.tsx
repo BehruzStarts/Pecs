@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
 import EditCategory from '../components/editCategory/EditCategory';
@@ -14,6 +20,7 @@ import PasswordModal from '../components/PasswordModal';
 import Button from '../components/Button';
 import routes from '../navigation/routes';
 import appLabels from '../config/appLabels';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface Props {
   navigation: any;
@@ -90,7 +97,17 @@ export default function EditScreen({navigation}: Props) {
           </View>
         ) : (
           <View style={styles.messageContainer}>
-            <Text style={styles.message}>{appLabels.addCategoryMsg}</Text>
+            <TouchableOpacity
+              style={styles.uploadContainer}
+              onPress={onAddNewCategory}>
+              <Icon
+                name="upload"
+                size={moderateScale(80)}
+                color={colors.white}
+                style={styles.uploadIcon}
+              />
+              <Text style={styles.message}>{appLabels.addCategoryMsg}</Text>
+            </TouchableOpacity>
           </View>
         )}
       </ScrollView>
@@ -106,13 +123,25 @@ const styles = StyleSheet.create({
   },
   messageContainer: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    margin: moderateScale(15),
   },
   message: {
     textAlign: 'center',
-    fontSize: moderateScale(35),
+    fontSize: moderateScale(16),
     color: colors.primary,
+    marginTop: moderateScale(15),
+  },
+  uploadContainer: {
+    margin: moderateScale(15),
+    borderRadius: 10,
+    elevation: moderateScale(10),
+    padding: moderateScale(15),
+    backgroundColor: colors.white,
+  },
+  uploadIcon: {
+    backgroundColor: colors.primary,
+    padding: moderateScale(15),
+    alignSelf: 'center',
+    borderRadius: 90,
   },
 });

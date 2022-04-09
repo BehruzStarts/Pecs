@@ -1,7 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Category from '../components/Category';
 import FullScreenImage from '../components/FullScreenImage';
@@ -10,6 +17,7 @@ import appLabels from '../config/appLabels';
 import colors from '../config/colors';
 import {CATEGORY_STORE_KEY} from '../config/constants';
 import {getPermissionAndLocalData} from '../config/UtilFunctions';
+import routes from '../navigation/routes';
 
 export default function HomeScreen({navigation}: any) {
   const categoriesFromMemory = getPermissionAndLocalData(CATEGORY_STORE_KEY);
@@ -71,7 +79,17 @@ export default function HomeScreen({navigation}: any) {
         </ScrollView>
       ) : (
         <View style={styles.messageContainer}>
-          <Text style={styles.message}>{appLabels.uploadImgMsg}</Text>
+          <TouchableOpacity
+            style={styles.uploadContainer}
+            onPress={() => navigation.navigate(routes.EDIT_SCREEN)}>
+            <Icon
+              name="upload"
+              size={moderateScale(80)}
+              color={colors.white}
+              style={styles.uploadIcon}
+            />
+            <Text style={styles.message}>{appLabels.uploadImgMsg}</Text>
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -85,12 +103,25 @@ const styles = StyleSheet.create({
   },
   messageContainer: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
   message: {
     textAlign: 'center',
-    fontSize: moderateScale(35),
+    fontSize: moderateScale(16),
     color: colors.primary,
+    marginTop: moderateScale(15),
+  },
+  uploadContainer: {
+    margin: moderateScale(15),
+    borderRadius: 10,
+    elevation: moderateScale(10),
+    padding: moderateScale(15),
+    backgroundColor: colors.white,
+  },
+  uploadIcon: {
+    backgroundColor: colors.primary,
+    padding: moderateScale(15),
+    alignSelf: 'center',
+    borderRadius: 90,
   },
 });
