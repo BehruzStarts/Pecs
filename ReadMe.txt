@@ -1,6 +1,6 @@
 How to Download the Application:
 Please follow the link below to download PECS app
-https://drive.google.com/drive/folders/15impVp77PIXWJJjynQhQ2bifZyXpW3kN
+    - https://drive.google.com/drive/folders/15impVp77PIXWJJjynQhQ2bifZyXpW3kN
 
 Note*
 When prompted for a password, please enter "0000"
