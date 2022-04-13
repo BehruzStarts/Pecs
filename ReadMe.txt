@@ -1,10 +1,17 @@
+How to Download the Application:
+Please follow the link below to download PECS app.
+https://drive.google.com/drive/folders/15impVp77PIXWJJjynQhQ2bifZyXpW3kN
+
+Note*
+When prompted for a password, please enter "0000"
+
 Setting up the development environment:
     - go to below location, click on "React Native CLI Quickstart" tab, select "Android" for Target OS and follow the setup steps
     - https://reactnative.dev/docs/environment-setup
     - Use VS Code for your IDE
 
 Setup:
-    After cloning the repository please follow below steps:
+    After cloning the repository please follow below steps: 
     - go to your projects root directory and run "npm i"
 
 Execution on Emulator:
